@@ -1,0 +1,154 @@
+2024-02-20 20:31:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE COMPANYCHANGE ID[*] ID INT"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE COMPANYCHANGE id ID INT [42001-200]
+2024-02-20 20:31:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE COMPANY CHANGE[*] ID ID INT"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE COMPANY CHANGE id ID INT [42001-200]
+2024-02-20 20:32:11 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE COMPANY CHANGE[*] ID ID INT"; expected "., ADD, SET, RENAME, DROP, ALTER"; SQL statement:
+ALTER TABLE COMPANY CHANGE id ID INT [42001-200]
+2024-02-20 20:32:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "ALTER TABLE COMPANY RENAME COLUMN ID ID[*] INT"; expected "TO"; SQL statement:
+ALTER TABLE COMPANY RENAME COLUMN id ID INT [42001-200]
+2024-02-20 20:33:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+ALTER TABLE COMPANY RENAME COLUMN id TO ID [90002-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.Prepared.query(Prepared.java:231)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:285)
+	at org.h2.command.Command.executeQuery(Command.java:195)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:114)
+	at carsharing.db.DatabaseManager.executeQuerry(DatabaseManager.java:33)
+	at carsharing.Main.main(Main.java:8)
+2024-02-20 20:34:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" not found; SQL statement:
+ALTER TABLE COMPANY RENAME COLUMN id TO ID [42102-200]
+2024-02-20 20:37:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "COMPANY" already exists; SQL statement:
+CREATE TABLE COMPANY( ID INT AUTO_INCREMENT PRIMARY KEY, NAME VARCHAR(45) UNIQUE NOT NULL) [42101-200]
+2024-02-20 20:44:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-02-20 20:45:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-02-20 20:46:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-02-20 20:48:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-02-20 20:51:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-02-20 20:53:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-02-20 20:57:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-02-20 21:06:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-02-20 21:06:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-02-20 21:07:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-07 17:54:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Method is not allowed for a query. Use execute or executeQuery instead of executeUpdate; SQL statement:
+SELECT 1+1; [90001-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.Prepared.update(Prepared.java:219)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152)
+	at carsharing.db.database.DataUpdater.executeUpdate(DataUpdater.java:29)
+	at carsharing.db.dao.company.CompanyDataUpdater.init(CompanyDataUpdater.java:47)
+	at carsharing.GUICOntroller.init(GUICOntroller.java:32)
+	at carsharing.Main.main(Main.java:6)
+2024-04-07 17:58:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-07 17:58:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Parameter "#2" is not set; SQL statement:
+INSERT INTO COMPANY VALUES(?,?) [90012-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:590)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.Parameter.checkSet(Parameter.java:83)
+	at org.h2.command.Prepared.checkParameters(Prepared.java:182)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:187)
+	at org.h2.command.Command.executeUpdate(Command.java:251)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152)
+	at carsharing.db.database.DataUpdater.executeUpdate(DataUpdater.java:29)
+	at carsharing.db.dao.company.CompanyDataUpdater.insertData(CompanyDataUpdater.java:21)
+	at carsharing.db.dao.company.CompanyDataUpdater.insertData(CompanyDataUpdater.java:7)
+	at carsharing.db.dao.company.CompanyDAOImpl.add(CompanyDAOImpl.java:42)
+	at carsharing.GUICOntroller.displaySecondMenu(GUICOntroller.java:82)
+	at carsharing.GUICOntroller.displayMainMenu(GUICOntroller.java:44)
+	at carsharing.GUICOntroller.init(GUICOntroller.java:33)
+	at carsharing.Main.main(Main.java:6)
+2024-04-07 18:00:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column count does not match; SQL statement:
+INSERT INTO COMPANY VALUES(?) [21002-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.dml.Insert.prepare(Insert.java:319)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:352)
+	at carsharing.db.database.DataUpdater.executeUpdate(DataUpdater.java:25)
+	at carsharing.db.dao.company.CompanyDataUpdater.insertData(CompanyDataUpdater.java:21)
+	at carsharing.db.dao.company.CompanyDataUpdater.insertData(CompanyDataUpdater.java:7)
+	at carsharing.db.dao.company.CompanyDAOImpl.add(CompanyDAOImpl.java:42)
+	at carsharing.GUICOntroller.displaySecondMenu(GUICOntroller.java:82)
+	at carsharing.GUICOntroller.displayMainMenu(GUICOntroller.java:44)
+	at carsharing.GUICOntroller.init(GUICOntroller.java:33)
+	at carsharing.Main.main(Main.java:6)
+2024-04-07 18:03:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-07 18:51:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-07 18:53:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-09 18:46:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-09 18:47:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-09 18:47:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-09 18:53:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-09 18:53:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-09 18:54:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-09 19:00:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-09 19:01:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-13 22:27:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The object is already closed [90007-200]
+2024-04-13 22:39:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: The result set is not scrollable and can not be reset. You may need to use conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ..). [90128-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:505)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.jdbc.JdbcResultSet.resetResult(JdbcResultSet.java:3301)
+	at org.h2.jdbc.JdbcResultSet.beforeFirst(JdbcResultSet.java:2772)
+	at carsharing.db.dao.company.CompanyQueryExecutor.selectAll(CompanyQueryExecutor.java:33)
+	at carsharing.db.dao.company.CompanyDAOImpl.findALl(CompanyDAOImpl.java:20)
+	at carsharing.GUICOntroller.displaySecondMenu(GUICOntroller.java:73)
+	at carsharing.GUICOntroller.displayMainMenu(GUICOntroller.java:45)
+	at carsharing.GUICOntroller.init(GUICOntroller.java:33)
+	at carsharing.Main.main(Main.java:6)

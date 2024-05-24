@@ -1,0 +1,437 @@
+[1;31m
+Start test 1[0m
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 0
+Exiting program...
+[1;31m
+Start test 2[0m
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 1
+1. Company list
+2. Create a company
+	0. Back
+> 0
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+[1;31m
+Start test 3[0m
+[1;31m
+Start test 4[0m
+[1;31m
+Start test 5[0m
+[1;31m
+Start test 6[0m
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 1
+1. Company list
+2. Create a company
+	0. Back
+> 1
+The company list is empty!
+
+1. Company list
+2. Create a company
+	0. Back
+> 2
+Enter the company name:
+> Super company
+Company has been added!
+1. Company list
+2. Create a company
+	0. Back
+> 1
+The query has been executed!
+Choose the company:
+1. Super company
+	0. Back
+> 0
+1. Company list
+2. Create a company
+	0. Back
+> 2
+Enter the company name:
+> Another company
+Company has been added!
+1. Company list
+2. Create a company
+	0. Back
+> 2
+Enter the company name:
+> One more company
+Company has been added!
+1. Company list
+2. Create a company
+	0. Back
+> 1
+The query has been executed!
+Choose the company:
+1. Super company
+2. Another company
+3. One more company
+	0. Back
+> 2
+'Another company' company
+1. Car list
+2. Create a car
+	0. Back
+[1;31m
+Start test 7[0m
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 1
+1. Company list
+2. Create a company
+	0. Back
+> 2
+Enter the company name:
+> Car To Go
+Company has been added!
+1. Company list
+2. Create a company
+	0. Back
+> 2
+Enter the company name:
+> Drive Now
+Company has been added!
+1. Company list
+2. Create a company
+	0. Back
+> 1
+The query has been executed!
+Choose the company:
+1. Car To Go
+2. Drive Now
+	0. Back
+> 1
+'Car To Go' company
+1. Car list
+2. Create a car
+	0. Back
+> 1
+The car list is empty!
+
+
+Car list:
+'Car To Go' company
+1. Car list
+2. Create a car
+	0. Back
+> 2
+Enter the car name:
+> Hyundai Venue
+Car has been added!
+'Car To Go' company
+1. Car list
+2. Create a car
+	0. Back
+> 2
+Enter the car name:
+> Maruti Suzuki Dzire
+Car has been added!
+'Car To Go' company
+1. Car list
+2. Create a car
+	0. Back
+> 1
+The query has been executed!
+
+Car list:
+1. Hyundai Venue
+2. Maruti Suzuki Dzire
+'Car To Go' company
+1. Car list
+2. Create a car
+	0. Back
+> 0
+1. Company list
+2. Create a company
+	0. Back
+> 1
+The query has been executed!
+Choose the company:
+1. Car To Go
+2. Drive Now
+	0. Back
+> 2
+'Drive Now' company
+1. Car list
+2. Create a car
+	0. Back
+> 1
+The car list is empty!
+
+
+Car list:
+'Drive Now' company
+1. Car list
+2. Create a car
+	0. Back
+> 2
+Enter the car name:
+> Lamborghini Urraco
+Car has been added!
+'Drive Now' company
+1. Car list
+2. Create a car
+	0. Back
+> 1
+The query has been executed!
+
+Car list:
+1. Lamborghini Urraco
+'Drive Now' company
+1. Car list
+2. Create a car
+	0. Back
+> 0
+1. Company list
+2. Create a company
+	0. Back
+> 0
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 0
+Exiting program...
+Enter the company name:
+[1;31m
+Start test 8[0m
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 2
+The customer list is empty!
+
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 3
+Enter the customer name:
+> First customer
+Customer has been added!
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 3
+Enter the customer name:
+> Second customer
+Customer has been added!
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 2
+The query has been executed!
+Customer list:
+1. First customer
+2. Second customer
+	0. Back
+> 1
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+> 3
+You didn't rent a car!
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+> 2
+You didn't rent a car!
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+[1;31m
+Start test 9[0m
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 2
+The query has been executed!
+Customer list:
+1. First customer
+2. Second customer
+	0. Back
+> 1
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+> 1
+The query has been executed!
+Choose the company:
+1. Car To Go
+2. Drive Now
+	0. Back
+> 1
+The query has been executed!
+Choose car:
+1. Hyundai Venue
+2. Maruti Suzuki Dzire
+3. Lamborghini Urraco
+	0. Back
+> 1
+Customer has been updated!
+You rented 'Hyundai Venue'
+The query has been executed!
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+> 3
+The query has been executed!
+The query has been executed!
+Your rented car:
+Hyundai Venue
+	Company:
+Car To Go
+Something went wrong!
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+> 1
+You've already rented a car!
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+> 2
+Customer has been updated!
+You've returned a rented car!
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+> 0
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 0
+Exiting program...
+Enter the customer name:
+[1;31m
+Start test 10[0m
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 2
+The query has been executed!
+Customer list:
+1. First customer
+2. Second customer
+	0. Back
+> 2
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+> 1
+The query has been executed!
+Choose the company:
+1. Car To Go
+2. Drive Now
+	0. Back
+> 1
+The query has been executed!
+Choose car:
+1. Hyundai Venue
+2. Maruti Suzuki Dzire
+3. Lamborghini Urraco
+	0. Back
+> 1
+Customer has been updated!
+You rented 'Hyundai Venue'
+The query has been executed!
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+> 0
+1. Log in as a manager
+2. Log in as a customer
+3. Create a customer
+	0. Exit
+> 2
+The query has been executed!
+Customer list:
+1. First customer
+2. Second customer
+	0. Back
+> 1
+1. Rent a car
+2. Return a rented car
+3. My rented car
+	0. Back
+> 1
+The query has been executed!
+Choose the company:
+1. Car To Go
+2. Drive Now
+	0. Back
+> 1
+The query has been executed!
+Choose car:
+1. Maruti Suzuki Dzire
+2. Lamborghini Urraco
+	0. Back
+> 0
+Enter the customer name:
+> 0
+Customer has been added!
+Enter the customer name:
+> 0
+ ¯org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Unique index or primary key violation: "PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(NAME) VALUES 3"; SQL statement:
+ 3INSERT INTO CUSTOMER (NAME) VALUES(?) [23505-200]
+ J	at org.h2.message.DbException.getJdbcSQLException(DbException.java:459)
+ J	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+ :	at org.h2.message.DbException.get(DbException.java:205)
+ :	at org.h2.message.DbException.get(DbException.java:181)
+ I	at org.h2.index.BaseIndex.getDuplicateKeyException(BaseIndex.java:103)
+ O	at org.h2.mvstore.db.MVSecondaryIndex.checkUnique(MVSecondaryIndex.java:221)
+ G	at org.h2.mvstore.db.MVSecondaryIndex.add(MVSecondaryIndex.java:196)
+ 8	at org.h2.mvstore.db.MVTable.addRow(MVTable.java:531)
+ ;	at org.h2.command.dml.Insert.insertRows(Insert.java:195)
+ 7	at org.h2.command.dml.Insert.update(Insert.java:151)
+ G	at org.h2.command.CommandContainer.update(CommandContainer.java:198)
+ <	at org.h2.command.Command.executeUpdate(Command.java:251)
+ ]	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:191)
+ U	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:152)
+ E	at carsharing.db.dao.customer.CustomerDAO.add(CustomerDAO.java:66)
+ B	at carsharing.GUIController.addCustomer(GUIController.java:244)
+ E	at carsharing.GUIController.displayMainMenu(GUIController.java:60)
+ <	at carsharing.GUIController.<init>(GUIController.java:34)
+ (	at carsharing.Main.main(Main.java:11)
+ T	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+ f	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+ n	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+ @	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+ h	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.invokeMain(MainMethodExecutor.java:160)
+ m	at org.hyperskill.hstest.testing.execution.MainMethodExecutor.lambda$launch$1(MainMethodExecutor.java:188)
+ W	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+ H	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+ _	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+ _	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+ 5	at java.base/java.lang.Thread.run(Thread.java:840)
