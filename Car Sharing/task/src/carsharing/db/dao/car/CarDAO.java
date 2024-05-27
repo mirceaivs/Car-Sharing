@@ -93,13 +93,7 @@ public class CarDAO extends DAO<Car> {
             statement.setString(1, car.getName());
             statement.setInt(2, car.getCompany_id());
             int result = statement.executeUpdate();
-            if (result != 0) {
-                System.out.println("Car has been added!");
-                return true;
-            } else {
-                System.out.println("Car was not found!");
-                return false;
-            }
+            return result != 0;
         }catch (SQLException e){
             e.printStackTrace();
             return false;
@@ -127,15 +121,27 @@ public class CarDAO extends DAO<Car> {
     @Override
     public boolean deleteById(int id){
         String sql = "DELETE FROM CAR WHERE ID = ?";
-        try (PreparedStatement statement = connection.getConnection().prepareStatement(sql)) {
-            statement.setObject(1, id);
-            int result = statement.executeUpdate();
-            if (result != 0) {
-                System.out.println("Car has been removed!");
-                return true;
-            } else {
-                System.out.println("Car was not removed!");
+        if(isCarRented(id))
+        {
+            return false;
+        }else{
+            try (PreparedStatement statement = connection.getConnection().prepareStatement(sql)) {
+                statement.setObject(1, id);
+                int result = statement.executeUpdate();
+                return result != 0;
+            }catch (SQLException e){
+                e.printStackTrace();
                 return false;
+            }
+        }
+    }
+
+    private boolean isCarRented(int id){
+        String sql = "SELECT car.id FROM car JOIN customer on car.id = customer.rented_car_id WHERE car.id = ?;";
+        try(PreparedStatement statement = connection.getConnection().prepareStatement(sql)){
+            statement.setInt(1, id);
+            try(ResultSet resultSet = statement.executeQuery()){
+                return resultSet.next();
             }
         }catch (SQLException e){
             e.printStackTrace();
@@ -143,6 +149,7 @@ public class CarDAO extends DAO<Car> {
         }
     }
 
+    @Override
     public void init(){
         String sql = "CREATE TABLE IF NOT EXISTS CAR (" +
                 "ID INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY," +

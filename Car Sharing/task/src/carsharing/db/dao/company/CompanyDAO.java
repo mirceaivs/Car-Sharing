@@ -62,13 +62,7 @@ public class CompanyDAO extends DAO<Company> {
         try (PreparedStatement statement = connection.getConnection().prepareStatement(sql)) {
             statement.setString(1, company.getName());
             int result = statement.executeUpdate();
-            if (result != 0) {
-                System.out.println("Company has been added!");
-                return true;
-            } else {
-                System.out.println("Company was not found!");
-                return false;
-            }
+            return result != 0;
         }catch (SQLException e){
             e.printStackTrace();
             return false;
@@ -95,16 +89,25 @@ public class CompanyDAO extends DAO<Company> {
     }
 
     public boolean deleteById(int id){
+        if (hasCars(id))
+            return false;
         String sql = "DELETE FROM COMPANY WHERE ID = ?";
         try (PreparedStatement statement = connection.getConnection().prepareStatement(sql)) {
             statement.setObject(1, id);
             int result = statement.executeUpdate();
-            if (result != 0) {
-                System.out.println("Company has been removed!");
-                return true;
-            } else {
-                System.out.println("Company was not removed!");
-                return false;
+            return result != 0;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean hasCars(int id){
+        String sql = "SELECT company.id FROM company JOIN car ON company.id = car.company_id where company.id = ?";
+        try(PreparedStatement statement = connection.getConnection().prepareStatement(sql)){
+            statement.setInt(1, id);
+            try(ResultSet resultSet = statement.executeQuery()){
+                return resultSet.next();
             }
         }catch (SQLException e){
             e.printStackTrace();

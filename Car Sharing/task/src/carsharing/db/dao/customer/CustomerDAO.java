@@ -64,13 +64,7 @@ public class CustomerDAO extends DAO<Customer> {
         try (PreparedStatement statement = connection.getConnection().prepareStatement(sql)) {
             statement.setString(1, customer.getName());
             int result = statement.executeUpdate();
-            if (result != 0) {
-                System.out.println("Customer has been added!");
-                return true;
-            } else {
-                System.out.println("Customer was not found!");
-                return false;
-            }
+            return result != 0;
         }catch (SQLException e){
             e.printStackTrace();
             return false;
@@ -98,37 +92,32 @@ public class CustomerDAO extends DAO<Customer> {
     @Override
     public boolean deleteById(int id){
         String sql = "DELETE FROM CUSTOMER WHERE ID = ?";
+        if(hasRentedCar(id)){
+            return false;
+        }
         try (PreparedStatement statement = connection.getConnection().prepareStatement(sql)) {
             statement.setObject(1, id);
             int result = statement.executeUpdate();
-            if (result != 0) {
-                System.out.println("Customer has been removed!");
-                return true;
-            } else {
-                System.out.println("Customer was not removed!");
-                return false;
+            return result != 0;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private boolean hasRentedCar(int id){
+        String sql = "SELECT rented_car_id FROM CUSTOMER where id = ? and rented_car_id IS NOT NULL";
+        try (PreparedStatement statement = connection.getConnection().prepareStatement(sql)) {
+            statement.setObject(1, id);
+            try(ResultSet resultSet = statement.executeQuery()){
+                return resultSet.next();
             }
         }catch (SQLException e){
             e.printStackTrace();
             return false;
         }
     }
-//    public boolean checkRentedCar(int customer_id){
-//        String sql = "SELECT RENTED_CAR_ID FROM CUSTOMER WHERE ID = ?" ;
-//        try(PreparedStatement statement = connection.getConnection().prepareStatement(sql)){
-//            statement.setInt(1, customer_id);
-//            try(ResultSet resultSet = statement.executeQuery()){
-//                if(resultSet.isBeforeFirst()){
-//                    return false;
-//                }else{
-//                    return true;
-//                }
-//            }
-//        }catch (SQLException e){
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
+
 public boolean checkRentedCar(int customer_id) {
     String sql = "SELECT RENTED_CAR_ID FROM CUSTOMER WHERE ID = ?";
     try (PreparedStatement statement = connection.getConnection().prepareStatement(sql)) {

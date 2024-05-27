@@ -17,16 +17,17 @@ import java.util.stream.IntStream;
 public  class GUIController implements GUIHandler {
     private final Scanner scanner;
     private int choice=0;
-    private final CompanyDAO companyDao;
+    private final CompanyDAO companyDAO;
     private final CarDAO carDAO;
     private final CustomerDAO customerDAO;
     private Customer customer;
     private Company company;
 
+
     public GUIController(Initializer initializer)
     {
         this.scanner = new Scanner(System.in);
-        this.companyDao = initializer.getCompanyDAO();
+        this.companyDAO = initializer.getCompanyDAO();
         this.carDAO = initializer.getCarDAO();
         this.customerDAO = initializer.getCustomerDAO();
         company = null;
@@ -47,11 +48,12 @@ public  class GUIController implements GUIHandler {
                 switch(choice){
                     case 1:{
                         displayManagerMenu();
-                        break;
+                        return;
                     }
                     case 2:{
                         if(selectCustomer()){
                             displayCustomerMenu();
+                            return;
                         }else{
                             break;
                         }
@@ -62,7 +64,7 @@ public  class GUIController implements GUIHandler {
                     }
                     case 0:{
                         System.out.println("Exiting program...");
-                        break;
+                        return;
                     }
                     default:
                         System.out.println("Invalid choice. Please try again!");
@@ -78,6 +80,7 @@ public  class GUIController implements GUIHandler {
         do{
             System.out.println("1. Company list");
             System.out.println("2. Create a company");
+            System.out.println("3. Delete a company");
             System.out.println("0. Back");
             try{
                 choice = scanner.nextInt();
@@ -86,17 +89,30 @@ public  class GUIController implements GUIHandler {
                     case 1:{
                         if(selectCompany()){
                             displayCompanyMenu();
+                            return;
                         }else{
-                            break;
+                            displayManagerMenu();
+                            return;
                         }
                     }
                     case 2:{
                         addCompany();
                         break;
                     }
+                    case 3:{
+                        if (selectCompany()) {
+                            deleteCompany(company.getId());
+                            company = null;
+                            return;
+                        }
+                        else{
+                            displayManagerMenu();
+                            return;
+                        }
+                    }
                     case 0:{
                         displayMainMenu();
-                        break;
+                        return;
                     }
                     default:
                         System.out.println("Invalid choice. Please try again!");
@@ -114,6 +130,7 @@ public  class GUIController implements GUIHandler {
             System.out.println("'"+company.getName()+"' company");
             System.out.println("1. Car list");
             System.out.println("2. Create a car");
+            System.out.println("3. Delete a car");
             System.out.println("0. Back");
             try{
                 choice = scanner.nextInt();
@@ -124,12 +141,23 @@ public  class GUIController implements GUIHandler {
                         break;
                     }
                     case 2:{
-                        addCars(company.getId());
+                        addCar(company.getId());
+                        break;
+                    }
+                    case 3:{
+                        Car car = selectCar();
+                        if(car != null){
+                            deleteCar(car.getId());
+                            break;
+                        }else if(choice == 0){
+                            displayCompanyMenu();
+                            return;
+                        }
                         break;
                     }
                     case 0:{
                         displayManagerMenu();
-                        break;
+                        return;
                     }
                     default:
                         System.out.println("Invalid choice. Please try again!");
@@ -147,6 +175,7 @@ public  class GUIController implements GUIHandler {
             System.out.println("1. Rent a car");
             System.out.println("2. Return a rented car");
             System.out.println("3. My rented car");
+            System.out.println("4. Delete customer");
             System.out.println("0. Back");
             try{
                 choice = scanner.nextInt();
@@ -164,9 +193,14 @@ public  class GUIController implements GUIHandler {
                         displayRentedCar();
                         break;
                     }
+                    case 4:{
+                        deleteCustomer(customer.getId());
+                        displayMainMenu();
+                        return;
+                    }
                     case 0:{
                         displayMainMenu();
-                        break;
+                        return;
                     }
                     default:
                         System.out.println("Invalid choice. Please try again!");
@@ -194,6 +228,7 @@ public  class GUIController implements GUIHandler {
         setChoice();
         if(choice == 0){
             displayMainMenu();
+            return false;
         }
             customer = customerMap.get(choice - 1);
             return true;
@@ -201,7 +236,7 @@ public  class GUIController implements GUIHandler {
     }
 
     private boolean selectCompany(){
-        List <Company> companies = companyDao.findAll();
+        List <Company> companies = companyDAO.findAll();
         if(companies.isEmpty() ){
             System.out.println("The company list is empty!\n");
             return false;
@@ -217,7 +252,7 @@ public  class GUIController implements GUIHandler {
             System.out.println("0. Back");
             setChoice();
             if(choice == 0){
-                displayManagerMenu();
+                return false;
             }
             company = companiesMap.get(choice - 1);
             return true;
@@ -228,27 +263,36 @@ public  class GUIController implements GUIHandler {
         List <Car> cars = carDAO.findAll(company.getId());
         if(cars.isEmpty() ){
             System.out.println("The car list is empty!\n");
+            return;
         }
         System.out.println("\nCar list:");
         IntStream.range(0, cars.size())
                 .forEach( i ->{
                     System.out.println((i+1) + ". " + cars.get(i).getName());
                 });
-
     }
 
-    private void addCustomer(){
-        System.out.println("Enter the customer name:");
-        String name = scanner.nextLine();
-        Customer customer = new Customer(name);
-        customerDAO.add(customer);
-    }
-
-    private void addCompany(){
-        System.out.println("Enter the company name:");
-        String name = scanner.nextLine();
-        Company company = new Company(name);
-        companyDao.add(company);
+    private Car selectCar(){
+        List <Car> cars = carDAO.findAll(company.getId());
+        if(cars.isEmpty() ){
+            System.out.println("The car list is empty!\n");
+            return null;
+        }
+        else{
+            System.out.println("Choose the company:");
+            HashMap<Integer, Car> carsMap = new HashMap<>(cars.size());
+            IntStream.range(0, cars.size())
+                    .forEach( i ->{
+                        carsMap.put(i, cars.get(i));
+                        System.out.println((i+1) + ". " + cars.get(i).getName());
+                    });
+            System.out.println("0. Back");
+            setChoice();
+            if(choice == 0){
+                return null;
+            }
+            return carsMap.get(choice - 1);
+        }
     }
 
     private void rentACar() {
@@ -256,6 +300,7 @@ public  class GUIController implements GUIHandler {
             System.out.println("You've already rented a car!");
         } else {
             if (!selectCompany()) {
+                displayCustomerMenu();
                 return;
             }
             List<Car> cars = carDAO.findAvailableCars();
@@ -273,6 +318,7 @@ public  class GUIController implements GUIHandler {
             System.out.println("0. Back");
             setChoice();
             if (choice == 0) {
+                rentACar();
                 return;
             }
             Car selectedCar = carMap.get(choice);
@@ -308,7 +354,7 @@ public  class GUIController implements GUIHandler {
         else{
             Car rentedCar = carDAO.findById(customer.getRentedCarId());
             if(rentedCar != null){
-            Company rentedCarCompany = companyDao.findById(rentedCar.getCompany_id());
+            Company rentedCarCompany = companyDAO.findById(rentedCar.getCompany_id());
             System.out.println("Your rented car:\n" + rentedCar.getName()+
                     "\nCompany:\n"+ rentedCarCompany.getName() );
             }
@@ -329,10 +375,61 @@ public  class GUIController implements GUIHandler {
         }
     }
 
-    private void addCars(int companyId){
+    private void addCustomer(){
+        System.out.println("Enter the customer name:");
+        String name = scanner.nextLine();
+        Customer customer = new Customer(name);
+        if (customerDAO.add(customer)){
+            System.out.println("Customer has been added!");
+        }else{
+            System.out.println("Customer was not added!");
+        }
+    }
+
+    private void addCompany(){
+        System.out.println("Enter the company name:");
+        String name = scanner.nextLine();
+        Company company = new Company(name);
+        if (companyDAO.add(company)){
+            System.out.println("Company has been added!");
+        }else {
+            System.out.println("Company was not added!");
+        }
+    }
+
+    private void addCar(int companyId){
         System.out.println("Enter the car name:");
         String name = scanner.nextLine();
         Car car = new Car(name, companyId);
-        carDAO.add(car);
+        if (carDAO.add(car)) {
+            System.out.println("Car has been added!");
+        } else{
+            System.out.println("Car was not added!");
+        }
+
+    }
+
+    private void deleteCompany(int companyId){
+        if (companyDAO.deleteById(companyId)){
+            System.out.println("The company has been removed!");
+        }
+        else{
+            System.out.println("The company owns cars!");
+        }
+    }
+    private void deleteCar(int carId){
+        if(carDAO.deleteById(carId)){
+            System.out.println("The car has been removed!");
+        }else{
+            System.out.println("The car is rented!");
+        }
+    }
+    private void deleteCustomer(int customerId){
+        if (customerDAO.deleteById(customerId)){
+            System.out.println("The customer has been removed!");
+        }else{
+            System.out.println("The customer has a rented car!");
+        }
+
     }
 }
